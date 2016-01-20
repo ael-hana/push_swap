@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:10:42 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/20 20:23:37 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/20 22:40:19 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_swap		*ft_creat_list(int max, char **av)
 
 void	ft_print_list(t_swap *ptr)
 {
+	while (ptr->i != 1)
+		ptr = ptr->next;
 	while (ptr->max > ptr->i)
 	{
 		printf("le max est : %d, le i est %d, la branch : %c, la data est %d\n", ptr->max, ptr->i, ptr->branch, ptr->data);
@@ -67,5 +69,7 @@ int		main(int ac, char **av)
 
 	ft_check_params(ac, av);
 	ptr = ft_creat_list(ac - 1, av);
+	ft_sa(ptr);
+	ft_print_list(ptr);
 	return (0);
 }
