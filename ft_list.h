@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:04:02 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/20 18:06:40 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/20 20:13:44 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct			s_swap
 {
 	int					i;
+	char				branch;
 	unsigned int		max;
 	int					data;
 	struct s_swap		*next;
