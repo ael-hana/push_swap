@@ -6,18 +6,22 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:04:02 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/19 20:45:36 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/20 18:06:40 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "libft.h"
 
-typedef struct			s_list
+typedef struct			s_swap
 {
 	int					i;
 	unsigned int		max;
-	char				*data;
-	struct s_list		*next;
-}						t_list;
+	int					data;
+	struct s_swap		*next;
+}						t_swap;
+
+unsigned char	ft_check_params(int ac, char **av);
+void		ft_error();
