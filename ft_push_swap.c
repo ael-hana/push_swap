@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:10:42 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/20 22:40:19 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/21 18:34:47 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void		ft_error()
 t_swap		*ft_init_list(int max, int i, char *av, t_swap *next)
 {
 	t_swap	*ptr;
-
 
 	if (!(ptr = malloc(sizeof(t_swap))))
 		ft_error();
