@@ -30,17 +30,38 @@ void	ft_sa(t_swap *ptr)
 		ptr = ptr->next;
 	prev = ptr;
 	ptr = ptr->next;
-
 	ptr->i = ptr->max;
 	tmp = ptr;
 	ptr = ptr->next;
-
 	ptr->i = (ptr->max - 1);
 	tmp2 = ptr;
 	tmp3 = ptr->next;
 	ptr->next = tmp;
-
 	ptr = ptr->next;
 	ptr->next = tmp3;
 	prev->next = tmp2;
+}
+
+void	sa(t_swap *ptr)
+{
+	ft_putstr("sa");
+	ft_sa(ptr);
+}
+
+void	ft_sb(t_swap *ptr)
+{
+	ft_sa(ptr);
+}
+
+void	sb(t_swap *ptr)
+{
+	ft_putstr("sb");
+	ft_sa(ptr);
+}
+
+void	ft_ss(t_swap *ptr, t_swap *ptr2)
+{
+	ft_putstr("ss");
+	ft_sa(ptr);
+	ft_sb(ptr2);
 }
