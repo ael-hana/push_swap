@@ -18,7 +18,6 @@
 typedef struct			s_swap
 {
 	int					i;
-	char				branch;
 	unsigned int		max;
 	int					data;
 	struct s_swap		*next;

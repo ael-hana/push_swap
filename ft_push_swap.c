@@ -26,7 +26,6 @@ t_swap		*ft_init_list(int max, int i, char *av, t_swap *next)
 	if (!(ptr = malloc(sizeof(t_swap))))
 		ft_error();
 	ptr->next = next;
-	ptr->branch = 'A';
 	ptr->max = max;
 	ptr->data = ft_atoi(av);
 	ptr->i = i;
@@ -57,10 +56,10 @@ void	ft_print_list(t_swap *ptr)
 		ptr = ptr->next;
 	while (ptr->max > ptr->i)
 	{
-		printf("le max est : %d, le i est %d, la branch : %c, la data est %d\n", ptr->max, ptr->i, ptr->branch, ptr->data);
+		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
 		ptr = ptr->next;
 	}
-		printf("le max est : %d, le i est %d, la branch : %c, la data est %d\n", ptr->max, ptr->i, ptr->branch, ptr->data);
+		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
 }
 
 int		main(int ac, char **av)
