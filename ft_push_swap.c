@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:10:42 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/21 18:34:47 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/21 23:51:51 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,26 @@ t_swap		*ft_init_list(int max, int i, char *av, t_swap *next)
 		ft_error();
 	ptr->next = next;
 	ptr->max = max;
+	ptr->previous = NULL;
 	ptr->data = ft_atoi(av);
 	ptr->i = i;
+	return (ptr);
+}
+
+t_swap		*ft_previous(t_swap *old, t_swap *ptr)
+{
+	t_swap	*tmp;
+
+	if (ptr->max == ptr->i)
+	{
+		tmp = ptr;
+		tmp = tmp->next;
+		tmp->previous = ptr;
+	}
+	if (ptr->max != ptr->i)
+		ft_previous(ptr, ptr->next);
+	if (old)
+		ptr->previous = old;
 	return (ptr);
 }
 
@@ -59,6 +77,14 @@ void	ft_print_list(t_swap *ptr)
 		ptr = ptr->next;
 	}
 		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
+	printf("partie 2 \n");
+		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
+		ptr = ptr->previous;
+	while (ptr->max > ptr->i)
+	{
+		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
+		ptr = ptr->previous;
+	}
 }
 
 int		main(int ac, char **av)
@@ -67,7 +93,7 @@ int		main(int ac, char **av)
 
 	ft_check_params(ac, av);
 	ptr = ft_creat_list(ac - 1, av);
-	ft_sa(ptr);
+	ft_previous(NULL, ptr);
 	ft_print_list(ptr);
 	return (0);
 }

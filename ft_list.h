@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:04:02 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/20 21:56:06 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/21 23:08:49 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct			s_swap
 	int					i;
 	unsigned int		max;
 	int					data;
+	struct s_swap		*previous;
 	struct s_swap		*next;
 }						t_swap;
 void					ft_check_int(char *av);
