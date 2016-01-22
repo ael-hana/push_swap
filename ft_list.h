@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:04:02 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/22 03:37:02 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/22 04:57:07 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ void					ft_print_list(t_swap *ptr);
 void					ft_ss(t_swap **ptr, t_swap **ptr2);
 t_swap					*sb(t_swap *ptr);
 void					pa(t_swap **ptr, t_swap **ptr2);
+void					ft_rotate(t_swap **ptr);
 t_swap					*ft_sa(t_swap *ptr);
+void					ra(t_swap **ptr);
+void					rb(t_swap **ptr);
+void					rr(t_swap **ptr, t_swap **ptr2);
+void					ft_rev_rotate(t_swap **ptr);
+void					rra(t_swap **ptr);
+void					rrb(t_swap **ptr);
+void					rrr(t_swap **ptr, t_swap **ptr2);

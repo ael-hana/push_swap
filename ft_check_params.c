@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 17:48:31 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/20 18:23:47 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/22 04:57:06 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void			ft_check_overflow(char *av)
 		ft_error();
 	if (ft_strlen(av) == ft_strlen("2147483647"))
 		ft_check_int(av);
-	while (ft_isdigit(av[i++]));
+	while (ft_isdigit(av[i]))
+		++i;
 	if (av[--i])
 		ft_error();
 }

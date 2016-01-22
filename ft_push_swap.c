@@ -6,13 +6,13 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:10:42 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/22 03:37:45 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/22 04:57:05 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void		ft_error()
+void		ft_error(void)
 {
 	write(1, "Error\n", 6);
 	exit(EXIT_FAILURE);
@@ -46,17 +46,37 @@ t_swap		*ft_creat_list(int max, char **av)
 	return (save);
 }
 
-void	ft_print_list(t_swap *ptr)
+char		ft_sorted(t_swap *ptr)
+{
+	t_swap	*av;
+	int		i;
+
+	av = ptr->next;
+	i = 0;
+	while (av && av->data > ptr->data)
+	{
+		++i;
+		av = av->next;
+		ptr = ptr->next;
+	}
+	if (av)
+		return (0);
+	while ((i-- + 1) > 0)
+		(i + 1) ? ft_putstr("pb ") : ft_putstr("pb");
+	return (1);
+}
+
+void		ft_print_list(t_swap *ptr)
 {
 	while (ptr->next)
 	{
 		printf("la data est %d\n", ptr->data);
 		ptr = ptr->next;
 	}
-		printf("la data est %d\n", ptr->data);
+	printf("la data est %d\n", ptr->data);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_swap	*ba;
 	t_swap	*bb;
@@ -64,9 +84,8 @@ int		main(int ac, char **av)
 	bb = NULL;
 	ft_check_params(ac, av);
 	ba = ft_creat_list(ac - 1, av);
-	//ba = ft_sa(ba);
-	pa(&ba, &bb);
+	if (ft_sorted(ba))
+		return (0);
 	ft_print_list(ba);
-	ft_print_list(bb);
 	return (0);
 }
