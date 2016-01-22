@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:10:42 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/21 23:51:51 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/22 03:37:45 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,14 @@ void		ft_error()
 	exit(EXIT_FAILURE);
 }
 
-t_swap		*ft_init_list(int max, int i, char *av, t_swap *next)
+t_swap		*ft_init_list(char *av)
 {
 	t_swap	*ptr;
 
 	if (!(ptr = malloc(sizeof(t_swap))))
 		ft_error();
-	ptr->next = next;
-	ptr->max = max;
-	ptr->previous = NULL;
+	ptr->next = NULL;
 	ptr->data = ft_atoi(av);
-	ptr->i = i;
-	return (ptr);
-}
-
-t_swap		*ft_previous(t_swap *old, t_swap *ptr)
-{
-	t_swap	*tmp;
-
-	if (ptr->max == ptr->i)
-	{
-		tmp = ptr;
-		tmp = tmp->next;
-		tmp->previous = ptr;
-	}
-	if (ptr->max != ptr->i)
-		ft_previous(ptr, ptr->next);
-	if (old)
-		ptr->previous = old;
 	return (ptr);
 }
 
@@ -56,44 +36,37 @@ t_swap		*ft_creat_list(int max, char **av)
 	t_swap	*ptr;
 
 	i = 2;
-	ptr = ft_init_list(max, 1, av[1], NULL);
+	ptr = ft_init_list(av[1]);
 	save = ptr;
 	while (i <= max)
 	{
-		ptr->next = ft_init_list(max, i, av[i], save);
+		ptr->next = ft_init_list(av[i++]);
 		ptr = ptr->next;
-		++i;
 	}
-	return (ptr->next ? ptr->next : ptr);
+	return (save);
 }
 
 void	ft_print_list(t_swap *ptr)
 {
-	while (ptr->i != 1)
-		ptr = ptr->next;
-	while (ptr->max > ptr->i)
+	while (ptr->next)
 	{
-		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
+		printf("la data est %d\n", ptr->data);
 		ptr = ptr->next;
 	}
-		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
-	printf("partie 2 \n");
-		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
-		ptr = ptr->previous;
-	while (ptr->max > ptr->i)
-	{
-		printf("le max est : %d, le i est %d, la data est %d\n", ptr->max, ptr->i, ptr->data);
-		ptr = ptr->previous;
-	}
+		printf("la data est %d\n", ptr->data);
 }
 
 int		main(int ac, char **av)
 {
-	t_swap	*ptr;
+	t_swap	*ba;
+	t_swap	*bb;
 
+	bb = NULL;
 	ft_check_params(ac, av);
-	ptr = ft_creat_list(ac - 1, av);
-	ft_previous(NULL, ptr);
-	ft_print_list(ptr);
+	ba = ft_creat_list(ac - 1, av);
+	//ba = ft_sa(ba);
+	pa(&ba, &bb);
+	ft_print_list(ba);
+	ft_print_list(bb);
 	return (0);
 }
