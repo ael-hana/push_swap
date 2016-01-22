@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 20:24:39 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/22 02:24:53 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/22 14:53:38 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,22 @@ t_swap		*ft_sa(t_swap *ptr)
 
 t_swap		*sa(t_swap *ptr)
 {
+	t_swap	*tmp;
+
+	tmp = ptr->next;
+	if (!tmp || tmp->data > ptr->data)
+		return (NULL);
 	ft_putstr("sa");
 	return (ft_sa(ptr));
 }
 
 t_swap		*sb(t_swap *ptr)
 {
+	t_swap	*tmp;
+
+	tmp = ptr->next;
+	if (!tmp || tmp->data > ptr->data)
+		return (NULL);
 	ft_putstr("sb");
 	return (ft_sa(ptr));
 }

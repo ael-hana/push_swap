@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 17:48:31 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/22 04:57:06 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/22 18:10:41 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,31 @@ void			ft_check_overflow(char *av)
 		ft_check_int(av);
 	while (ft_isdigit(av[i]))
 		++i;
-	if (av[--i])
+	if (av[i])
 		ft_error();
 }
 
 unsigned char	ft_check_params(int ac, char **av)
 {
 	unsigned int	i;
+	unsigned int	index;
 
 	if (ac < 2)
 		ft_error();
 	i = 1;
 	while (ac > i)
 		ft_check_overflow(av[i++]);
+	index = 1;
+	while (ac > index)
+	{
+		i = 2;
+		while (i < ac && i != index)
+		{
+			if (!ft_strcmp(av[i], av[index]))
+				ft_error();
+			++i;
+		}
+		++index;
+	}
 	return (0);
 }
