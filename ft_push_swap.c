@@ -61,8 +61,6 @@ char		ft_sorted(t_swap *ptr)
 	}
 	if (av)
 		return (0);
-	//while ((i-- + 1) > 0)
-	//	(i + 1) ? ft_putstr("pb ") : ft_putstr("pb");
 	return (1);
 }
 
@@ -70,27 +68,57 @@ void		ft_print_list(t_swap *ptr)
 {
 	while (ptr->next)
 	{
-		printf("\nla data est %d\n", ptr->data);
+		ft_putstr("\nla data est ");
+		ft_putnbr(ptr->data);
 		ptr = ptr->next;
 	}
-	printf("la data est %d\n", ptr->data);
+	ft_putstr("\nla data est ");
+	ft_putnbr(ptr->data);
+	ft_putchar('\n');
 }
 
 void		ft_algo(t_swap **ba, t_swap **bb)
 {
-	void	*tmp;
+	t_swap	*tmp;
+	int		i;
+	int		max;
+	int		stop = 4200;
 
-	while (!ft_sorted(*ba))
+	tmp = *ba;
+	max = 0;
+	if (ft_size_list(*ba) > 3)
 	{
-		if (*ba && (tmp = sa(*ba)))
-			*ba= tmp;
-		else
+		while (tmp)
 		{
-			ra(ba);
-			ra(ba);
+			if (max < tmp->data)
+				max = tmp->data;
+			tmp = tmp->next;
 		}
-		ft_putchar(' ');
+		tmp = *ba;
+		while (tmp->data != max)
+		{
+			++i;
+			tmp = tmp->next;
+		}
+		while (((ft_size_list(*ba) / 2) < i) && --i)
+			ra(ba);
+		while ((*ba)->data != max)
+			rra(ba);
 	}
+	while (!ft_sorted(*ba) && stop)
+	{
+		if (*ba && (tmp = sa(*ba))) // sa
+			*ba = tmp;
+		else
+			rra(ba);
+			--stop;
+		ft_putchar(' ');
+		ft_putstr("*********************************************\n\n\n\n\n");
+		ft_print_list(*ba);
+		ft_putstr("*********************************************\n\n\n\n\n");
+	}
+	if (!stop)
+		ft_error();
 }
 
 int			main(int ac, char **av)
@@ -100,7 +128,9 @@ int			main(int ac, char **av)
 
 	bb = NULL;
 	ft_check_params(ac, av);
-	ba = ft_creat_list(ac - 1, av);
+	ft_print_list((ba = ft_creat_list(ac - 1, av)));
+		ft_putstr("*********************************************\n\n\n\n\n");
+		ft_putstr("*********************************************\n\n\n\n\n");
 	if (ft_sorted(ba))
 		return (0);
 	ft_algo(&ba, &bb);

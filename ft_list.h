@@ -39,4 +39,6 @@ void					rr(t_swap **ptr, t_swap **ptr2);
 void					ft_rev_rotate(t_swap **ptr);
 void					rra(t_swap **ptr);
 void					rrb(t_swap **ptr);
+void					pb(t_swap **ptr, t_swap **ptr2);
+int						ft_size_list(t_swap *ptr);
 void					rrr(t_swap **ptr, t_swap **ptr2);

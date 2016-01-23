@@ -12,6 +12,15 @@
 
 #include "ft_list.h"
 
+int				ft_size_list(t_swap *ptr)
+{
+	int	i;
+
+	i = 1;
+	while ((ptr = ptr->next) && ++i);
+	return (i);
+}
+
 void			ft_check_int(char *av)
 {
 	int			i;
