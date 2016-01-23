@@ -43,19 +43,16 @@ void		ft_rev_rotate(t_swap **ptr)
 
 void		rra(t_swap **ptr)
 {
-	ft_putstr("rra");
 	ft_rev_rotate(ptr);
 }
 
 void		rrb(t_swap **ptr)
 {
-	ft_putstr("rrb");
 	ft_rev_rotate(ptr);
 }
 
 void		rrr(t_swap **ptr, t_swap **ptr2)
 {
-	ft_putstr("rrr");
 	ft_rev_rotate(ptr);
 	ft_rev_rotate(ptr2);
 }

@@ -30,19 +30,16 @@ void	ft_rotate(t_swap **ptr)
 
 void	ra(t_swap **ptr)
 {
-	ft_putstr("ra");
 	ft_rotate(ptr);
 }
 
 void	rb(t_swap **ptr)
 {
-	ft_putstr("rb");
 	ft_rotate(ptr);
 }
 
 void	rr(t_swap **ptr, t_swap **ptr2)
 {
-	ft_putstr("rr");
 	ft_rotate(ptr);
 	ft_rotate(ptr2);
 }

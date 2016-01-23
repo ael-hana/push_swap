@@ -26,26 +26,24 @@ t_swap		*ft_sa(t_swap *ptr)
 	return (ptr);
 }
 
-t_swap		*sa(t_swap *ptr)
+void		sa(t_swap **ptr)
 {
 	t_swap	*tmp;
 
-	tmp = ptr->next;
-	if (!tmp || tmp->data > ptr->data)
-		return (NULL);
-	ft_putstr("sa");
-	return (ft_sa(ptr));
+	tmp = (*ptr)->next;
+	if (!tmp || tmp->data > (*ptr)->data)
+		return ;
+	*ptr = ft_sa(*ptr);
 }
 
-t_swap		*sb(t_swap *ptr)
+void		sb(t_swap **ptr)
 {
 	t_swap	*tmp;
 
-	tmp = ptr->next;
-	if (!tmp || tmp->data > ptr->data)
-		return (NULL);
-	ft_putstr("sb");
-	return (ft_sa(ptr));
+	tmp = (*ptr)->next;
+	if (!tmp || tmp->data > (*ptr)->data)
+		return ;
+	*ptr = ft_sa(*ptr);
 }
 
 void		ft_ss(t_swap **ptr, t_swap **ptr2)

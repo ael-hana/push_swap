@@ -77,49 +77,29 @@ void		ft_print_list(t_swap *ptr)
 	ft_putchar('\n');
 }
 
+t_tab		**ft_pt_op(void)
+{
+		t_tab	**op;
+
+	if (!(op = malloc(sizeof(t_tab **) * 6)))
+		ft_error();
+	op[0] = &sa;
+	op[1] = &sb;
+	op[2] = &ra;
+	op[3] = &rb;
+	op[4] = &rra;
+	op[5] = &rrb;
+	return (op);
+}
+
 void		ft_algo(t_swap **ba, t_swap **bb)
 {
-	t_swap	*tmp;
-	int		i;
-	int		max;
-	int		stop = 4200;
+	t_tab	**op;
 
-	tmp = *ba;
-	max = 0;
-	if (ft_size_list(*ba) > 3)
-	{
-		while (tmp)
-		{
-			if (max < tmp->data)
-				max = tmp->data;
-			tmp = tmp->next;
-		}
-		tmp = *ba;
-		while (tmp->data != max)
-		{
-			++i;
-			tmp = tmp->next;
-		}
-		while (((ft_size_list(*ba) / 2) < i) && --i)
-			ra(ba);
-		while ((*ba)->data != max)
-			rra(ba);
-	}
-	while (!ft_sorted(*ba) && stop)
-	{
-		if (*ba && (tmp = sa(*ba))) // sa
-			*ba = tmp;
-		else
-			rra(ba);
-			--stop;
-		ft_putchar(' ');
-		ft_putstr("*********************************************\n\n\n\n\n");
-		ft_print_list(*ba);
-		ft_putstr("*********************************************\n\n\n\n\n");
-	}
-	if (!stop)
-		ft_error();
+	op = ft_pt_op();
+	
 }
+
 
 int			main(int ac, char **av)
 {
@@ -129,8 +109,8 @@ int			main(int ac, char **av)
 	bb = NULL;
 	ft_check_params(ac, av);
 	ft_print_list((ba = ft_creat_list(ac - 1, av)));
-		ft_putstr("*********************************************\n\n\n\n\n");
-		ft_putstr("*********************************************\n\n\n\n\n");
+	ft_putstr("*********************************************\n\n\n\n\n");
+	ft_putstr("*********************************************\n\n\n\n\n");
 	if (ft_sorted(ba))
 		return (0);
 	ft_algo(&ba, &bb);
