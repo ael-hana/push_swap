@@ -97,28 +97,27 @@ void		ft_algo(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
 	void	*tmp;
 
 	tmp = op;
-	if (i / 6)
-		ft_algo(tmp, ba, bb, (i / 6));
-	if (i % 6 < 3)
-		op[i % 6](ba);
+	if (i / 3)
+		ft_algo(tmp, ba, bb, (i / 3));
+	op[i % 3](ba);
 }
 
 void		ft_algo_remove(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
 {
-	if (i / 6)
-		ft_algo(op, ba, bb, (i / 6));
-	if (i % 6 == 0)
+	if (i / 3)
+		ft_algo(op, ba, bb, (i / 3));
+	if (i % 3 == 0)
 		op[0](ba);
-	else if (i % 6 < 3)
-		op[i % 3 ? i + 1 : i - 1](ba);
+	else
+		op[i % 3 ? 2 : 1](ba);
 }
 
 void				ft_put_sol(unsigned int i)
 {
-	if (i / 6)
-		ft_put_sol(i / 6);
-	i %= 6;
-	if (!i)
+	if (i / 3)
+		ft_put_sol(i / 3);
+	i %= 3;
+	if (i == 0)
 		ft_putstr("sa ");
 	else if (i == 1)
 		ft_putstr("ra ");
@@ -139,6 +138,7 @@ void				call_algo(t_swap **ba, t_swap **bb)
 	{
 		ft_algo_remove(tmp, ba, bb, i);
 		ft_algo(tmp, ba, bb, ++i);
+		ft_putnbr(i);
 	}
 	ft_put_sol(i);
 }
