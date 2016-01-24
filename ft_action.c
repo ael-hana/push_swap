@@ -30,6 +30,8 @@ void		sa(t_swap **ptr)
 {
 	t_swap	*tmp;
 
+	if (!*ptr)
+		return ;
 	tmp = (*ptr)->next;
 	if (!tmp || tmp->data > (*ptr)->data)
 		return ;
@@ -40,6 +42,8 @@ void		sb(t_swap **ptr)
 {
 	t_swap	*tmp;
 
+	if (!*ptr)
+		return ;
 	tmp = (*ptr)->next;
 	if (!tmp || tmp->data > (*ptr)->data)
 		return ;

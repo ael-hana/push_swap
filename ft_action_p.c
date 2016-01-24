@@ -39,11 +39,12 @@ void		ft_swap(t_swap **ptr1, t_swap **ptr2)
 
 void		pa(t_swap **ptr, t_swap **ptr2)
 {
-	
-	ft_swap(ptr, ptr2);
+	if (*ptr)
+		ft_swap(ptr, ptr2);
 }
 
 void		pb(t_swap **ptr, t_swap **ptr2)
 {
-	ft_swap(ptr, ptr2);
+	if (*ptr)
+		ft_swap(ptr, ptr2);
 }
