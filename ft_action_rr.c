@@ -41,14 +41,18 @@ void		ft_rev_rotate(t_swap **ptr)
 
 void		rra(t_swap **ptr)
 {
-	if (!*ptr || !(*ptr)->next)
+	if (!ptr || !*ptr)
+		return ;
+	if (!(*ptr)->next)
 		return ;
 	ft_rev_rotate(ptr);
 }
 
 void		rrb(t_swap **ptr)
 {
-	if (!*ptr || !(*ptr)->next)
+	if (!ptr || !*ptr)
+		return ;
+	if (!(*ptr)->next)
 		return ;
 	ft_rev_rotate(ptr);
 }

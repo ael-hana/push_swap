@@ -128,6 +128,7 @@ void		ft_algo_remove(t_swap **ba, t_swap **bb)
 	}
 	if (tmp)
 		free(tmp);
+	*bb = NULL;
 }
 
 void				ft_put_sol(unsigned int i)
@@ -163,11 +164,10 @@ void				call_algo(t_swap **ba, int ac, char **av)
 	tmp = ft_pt_op();
 	i = 0;
 	ft_algo(tmp, ba, bb, i);
-	while (!ft_sorted(*ba) || *bb)
+	while (!*ba || !ft_sorted(*ba) || *bb)
 	{
-		//ft_algo_remove(ba, bb);
-		*bb = NULL;
 		*ba = ft_creat_list(ac, av);
+		*bb = NULL;
 		ft_algo(tmp, ba, bb, ++i);
 	}
 	ft_put_sol(i);
