@@ -115,9 +115,9 @@ void		ft_algo_remove(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
 
 void				ft_put_sol(unsigned int i)
 {
-	if (i / 3)
-		ft_put_sol(i / 3);
-	i %= 3;
+	if (i / 6)
+		ft_put_sol(i / 6);
+	i %= 6;
 	if (!i)
 		ft_putstr("sa ");
 	else if (i == 1)
