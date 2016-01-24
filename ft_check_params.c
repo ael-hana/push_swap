@@ -55,8 +55,8 @@ void			ft_check_overflow(char *av)
 
 unsigned char	ft_check_params(int ac, char **av)
 {
-	unsigned int	i;
-	unsigned int	index;
+	int				i;
+	int				index;
 
 	if (ac < 2)
 		ft_error();

@@ -30,11 +30,15 @@ void	ft_rotate(t_swap **ptr)
 
 void	ra(t_swap **ptr)
 {
+	if (!*ptr)
+		return ;
 	ft_rotate(ptr);
 }
 
 void	rb(t_swap **ptr)
 {
+	if (!*ptr)
+		return ;
 	ft_rotate(ptr);
 }
 

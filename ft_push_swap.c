@@ -81,11 +81,14 @@ t_tab		**ft_pt_op(void)
 {
 		t_tab	**op;
 
-	if (!(op = malloc(sizeof(t_tab **) * 3)))
+	if (!(op = malloc(sizeof(t_tab **) * 8)))
 		ft_error();
 	op[0] = &sa;
 	op[1] = &ra;
 	op[2] = &rra;
+	op[3] = &sb;
+	op[4] = &rb;
+	op[5] = &rrb;
 	return (op);
 }
 
@@ -94,17 +97,20 @@ void		ft_algo(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
 	void	*tmp;
 
 	tmp = op;
-	if (i / 3)
-		ft_algo(tmp, ba, bb, (i / 3));
-	op[i % 3](ba);
+	if (i / 6)
+		ft_algo(tmp, ba, bb, (i / 6));
+	if (i % 6 < 3)
+		op[i % 6](ba);
 }
 
 void		ft_algo_remove(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
 {
-	if (i / 3)
-		ft_algo(op, ba, bb, (i / 3));
-	i %= 3;
-	op[(i % 2) && i ? 2 : 1](ba);
+	if (i / 6)
+		ft_algo(op, ba, bb, (i / 6));
+	if (i % 6 == 0)
+		op[0](ba);
+	else if (i % 6 < 3)
+		op[i % 3 ? i + 1 : i - 1](ba);
 }
 
 void				ft_put_sol(unsigned int i)
@@ -116,7 +122,7 @@ void				ft_put_sol(unsigned int i)
 		ft_putstr("sa ");
 	else if (i == 1)
 		ft_putstr("ra ");
-	else
+	else if (i == 2)
 		ft_putstr("rra ");
 }
 
