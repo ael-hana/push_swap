@@ -42,3 +42,11 @@ void					rrb(t_swap **ptr);
 void					pb(t_swap **ptr, t_swap **ptr2);
 int						ft_size_list(t_swap *ptr);
 void					rrr(t_swap **ptr, t_swap **ptr2);
+void					ft_put_sol(unsigned int i);
+void					ft_algo(t_tab **op, t_swap **ba, t_swap **bb,
+unsigned int i);
+void					ft_algo_sort_s(t_tab **op, t_swap **ba, unsigned int i);
+
+void					ft_put_sol_s(unsigned int i);
+char					ft_sorted(t_swap *ptr);
+void					ft_algo_remove(t_swap **ba, t_swap **bb);
