@@ -81,25 +81,61 @@ t_tab		**ft_pt_op(void)
 {
 		t_tab	**op;
 
-	if (!(op = malloc(sizeof(t_tab **) * 6)))
+	if (!(op = malloc(sizeof(t_tab **) * 3)))
 		ft_error();
 	op[0] = &sa;
-	op[1] = &sb;
-	op[2] = &ra;
-	op[3] = &rb;
-	op[4] = &rra;
-	op[5] = &rrb;
+	op[1] = &ra;
+	op[2] = &rra;
 	return (op);
 }
 
-void		ft_algo(t_swap **ba, t_swap **bb)
+void		ft_algo(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
 {
-	t_tab	**op;
+	void	*tmp;
 
-	op = ft_pt_op();
-	
+	tmp = op;
+	if (i / 3)
+		ft_algo(tmp, ba, bb, (i / 3));
+	op[i % 3](ba);
 }
 
+void		ft_algo_remove(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
+{
+	if (i / 3)
+		ft_algo(op, ba, bb, (i / 3));
+	i %= 3;
+	op[(i % 2) && i ? 2 : 1](ba);
+}
+
+void				ft_put_sol(unsigned int i)
+{
+	if (i / 3)
+		ft_put_sol(i / 3);
+	i %= 3;
+	if (!i)
+		ft_putstr("sa ");
+	else if (i == 1)
+		ft_putstr("ra ");
+	else
+		ft_putstr("rra ");
+}
+
+void				call_algo(t_swap **ba, t_swap **bb)
+{
+	void			*tmp;
+	unsigned int	i;
+
+	tmp = ft_pt_op();
+	i = 0;
+
+	ft_algo(tmp, ba, bb, i);
+	while (!ft_sorted(*ba))
+	{
+		ft_algo_remove(tmp, ba, bb, i);
+		ft_algo(tmp, ba, bb, ++i);
+	}
+	ft_put_sol(i);
+}
 
 int			main(int ac, char **av)
 {
@@ -113,7 +149,7 @@ int			main(int ac, char **av)
 	ft_putstr("*********************************************\n\n\n\n\n");
 	if (ft_sorted(ba))
 		return (0);
-	ft_algo(&ba, &bb);
+	call_algo(&ba, &bb);
 	ft_print_list(ba);
 	return (0);
 }

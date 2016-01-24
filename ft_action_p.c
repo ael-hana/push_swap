@@ -29,28 +29,17 @@ void		ft_add(t_swap **ptr2, int data)
 
 void		ft_swap(t_swap **ptr1, t_swap **ptr2)
 {
-	int		i;
 	void	*tmp;
-	t_swap	*ptr;
 
-	ptr = *ptr1;
-	tmp = ptr;
-	i = 0;
-	while (ptr->next)
-	{
-		ptr = ptr->next;
-		++i;
-	}
-	ft_add(ptr2, ptr->data);
-	free(ptr);
-	ptr = tmp;
-	while (--i > 0)
-		ptr = ptr->next;
-	ptr->next = NULL;
+	tmp = *ptr2;
+	*ptr2 = *ptr1;
+	*ptr1 = (*ptr1)->next;
+	(*ptr2)->next = tmp;
 }
 
 void		pa(t_swap **ptr, t_swap **ptr2)
 {
+	
 	ft_swap(ptr, ptr2);
 }
 
