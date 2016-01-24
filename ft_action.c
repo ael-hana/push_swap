@@ -33,7 +33,7 @@ void		sa(t_swap **ptr)
 	if (!*ptr)
 		return ;
 	tmp = (*ptr)->next;
-	if (!tmp || tmp->data > (*ptr)->data)
+	if (!tmp)
 		return ;
 	*ptr = ft_sa(*ptr);
 }
@@ -45,7 +45,7 @@ void		sb(t_swap **ptr)
 	if (!*ptr)
 		return ;
 	tmp = (*ptr)->next;
-	if (!tmp || tmp->data > (*ptr)->data)
+	if (!tmp)
 		return ;
 	*ptr = ft_sa(*ptr);
 }

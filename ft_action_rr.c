@@ -33,7 +33,7 @@ void		ft_rev_rotate(t_swap **ptr)
 
 	i = ft_list_size(*ptr);
 	tmp = *ptr;
-	while (--i > 0)
+	while (i-- > 0)
 		tmp = tmp->next;
 	tmp2 = tmp->next;
 	tmp->next = NULL;
