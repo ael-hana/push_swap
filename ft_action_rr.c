@@ -27,13 +27,11 @@ int			ft_list_size(t_swap *ptr)
 
 void		ft_rev_rotate(t_swap **ptr)
 {
-	int		i;
 	t_swap	*tmp;
 	t_swap	*tmp2;
 
-	i = ft_list_size(*ptr);
 	tmp = *ptr;
-	while (i-- > 0)
+	while (tmp->next->next)
 		tmp = tmp->next;
 	tmp2 = tmp->next;
 	tmp->next = NULL;
