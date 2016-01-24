@@ -110,26 +110,24 @@ void		ft_algo(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
 		op[5](bb);
 }
 
-void		ft_algo_remove(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
+void		ft_algo_remove(t_swap **ba, t_swap **bb)
 {
-	if (i / 8)
-		ft_algo(op, ba, bb, (i / 8));
-	if (i % 8 == 0)
-		op[0](ba);
-	else if (i % 8 == 1)
-		op[2](ba);
-	else if (i % 8 == 1)
-		op[1](ba);
-	else if (i % 8 == 3 && *ba)
-		pa(ba, bb);
-	else if (i % 8 == 4 && *bb)
-		pb(bb, ba);
-	else if (i % 8 == 5)
-		op[3](bb);
-	else if (i % 8 == 6)
-		op[5](bb);
-	else if (i % 8 == 7)
-		op[4](bb);
+	t_swap	*tmp;
+
+	while (*ba && (tmp = (*ba)->next))
+	{
+		free(*ba);
+		*ba = tmp;
+	}
+	if (tmp)
+		free(tmp);
+	while (*bb && (tmp = (*bb)->next))
+	{
+		free(*bb);
+		*bb = tmp;
+	}
+	if (tmp)
+		free(tmp);
 }
 
 void				ft_put_sol(unsigned int i)
@@ -167,8 +165,9 @@ void				call_algo(t_swap **ba, int ac, char **av)
 	ft_algo(tmp, ba, bb, i);
 	while (!ft_sorted(*ba) || *bb)
 	{
-		*ba = ft_creat_list(ac, av);
+		//ft_algo_remove(ba, bb);
 		*bb = NULL;
+		*ba = ft_creat_list(ac, av);
 		ft_algo(tmp, ba, bb, ++i);
 	}
 	ft_put_sol(i);
@@ -184,7 +183,6 @@ int			main(int ac, char **av)
 	ft_putstr("*********************************************\n");
 	if (ft_sorted(ba))
 		return (0);
-//	ft_put_sol(35);
 	call_algo(&ba, (ac - 1), av);
 	ft_print_list(ba);
 	return (0);
