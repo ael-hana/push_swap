@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:10:42 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/25 06:51:51 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/25 07:03:50 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void				call_algo(t_swap **ba, t_swap **bb, int ac, char **av)
 
 	tmp = ft_pt_op();
 	i = 0;
-	if (ac > 5 && !ft_sorted(*ba))
-		return (ft_algo_sort_s(ba, !ft_strcmp(av[1], "-v") ? 1 : 0));
+	//if (i && !ft_sorted(*ba))
+	//	return (ft_algo_sort_s(ba, !ft_strcmp(av[1], "-v") ? 1 : 0));
 	ft_algo(tmp, ba, bb, i);
-	while (!*ba || !ft_sorted(*ba) || *bb)
+	while ((!*ba || !ft_sorted(*ba) || *bb) && i <= 5000000)
 	{
 		*ba = ft_creat_list(ac, av);
 		*bb = NULL;
@@ -85,6 +85,8 @@ void				call_algo(t_swap **ba, t_swap **bb, int ac, char **av)
 	}
 	*ba = ft_creat_list(ac, av);
 	*bb = NULL;
+	if (i > 5000000 && !ft_sorted(*ba))
+		return (ft_algo_sort_s(ba, !ft_strcmp(av[1], "-v") ? 1 : 0));
 	ft_put_sol(i, !ft_strcmp(av[1], "-v") ? 1 : 0, ba, bb);
 	ft_putchar('\n');
 }
