@@ -6,13 +6,54 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:09:51 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/25 05:15:32 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/25 06:38:18 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void		ft_algo_sort_s(t_tab **op, t_swap **ba, unsigned int i)
+t_swap		*ft_init_list(char *av)
+{
+	t_swap	*ptr;
+
+	if (!(ptr = malloc(sizeof(t_swap))))
+		ft_error();
+	ptr->next = NULL;
+	ptr->data = ft_atoi(av);
+	return (ptr);
+}
+
+t_swap		*ft_creat_list(int max, char **av)
+{
+	int		i;
+	void	*save;
+	t_swap	*ptr;
+
+	i = 1;
+	if (!ft_strcmp(av[1], "-v"))
+		++i;
+	ptr = ft_init_list(av[i++]);
+	save = ptr;
+	while (i <= max)
+	{
+		ptr->next = ft_init_list(av[i++]);
+		ptr = ptr->next;
+	}
+	return (save);
+}
+
+void		ft_print_param(t_swap **ba, unsigned int i, char op)
+{
+	if (op)
+	{
+		ra(ba);
+		ft_putstr("ra ");
+	}
+	i ? ft_print_list(*ba, 1) : 0;
+	i ? ft_print_list(NULL, 0) : 0;
+}
+
+void		ft_algo_sort_s(t_swap **ba, unsigned int i)
 {
 	int		min;
 
@@ -23,25 +64,18 @@ void		ft_algo_sort_s(t_tab **op, t_swap **ba, unsigned int i)
 		{
 			sa(ba);
 			ft_putstr("sa ");
-			i ? ft_print_list(*ba, 1) : 0;
-			i ? ft_print_list(NULL, 0) : 0;
+			ft_print_param(ba, i, 0);
 			if (min > (*ba)->data)
 				min = (*ba)->data;
 			while (min != (*ba)->data)
 			{
 				rra(ba);
 				ft_putstr("rra ");
-				i ? ft_print_list(*ba, 1) : 0;
-				i ? ft_print_list(NULL, 0) : 0;
+				ft_print_param(ba, i, 0);
 			}
 		}
 		else
-		{
-			ra(ba);
-			ft_putstr("ra ");
-			i ? ft_print_list(*ba, 1) : 0;
-			i ? ft_print_list(NULL, 0) : 0;
-		}
+			ft_print_param(ba, i, 1);
 	}
 	ft_putchar('\n');
 }

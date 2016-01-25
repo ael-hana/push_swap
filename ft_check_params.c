@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 17:48:31 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/25 04:00:52 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/25 06:24:01 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int				ft_size_list(t_swap *ptr)
 	int	i;
 
 	i = 1;
-	while ((ptr = ptr->next) && ++i);
+	while ((ptr = ptr->next))
+		++i;
 	return (i);
 }
 

@@ -1,4 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_algo_bf.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/25 06:22:43 by ael-hana          #+#    #+#             */
+/*   Updated: 2016/01/25 06:51:51 by ael-hana         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_list.h"
+
+void		ft_error(void)
+{
+	write(1, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
 
 void		ft_algo(t_tab **op, t_swap **ba, t_swap **bb, unsigned int i)
 {
@@ -39,6 +57,35 @@ void		ft_algo_remove(t_swap **ba, t_swap **bb)
 	*bb = NULL;
 }
 
+void		ft_suite_de_merde(unsigned int i, char op, t_swap **ba, t_swap **bb)
+{
+	if (i % 8 == 5)
+	{
+		ft_putstr("sb ");
+		op ? sb(bb) : 0;
+	}
+	else if (i % 8 == 6)
+	{
+		ft_putstr("rb ");
+		op ? rb(bb) : 0;
+	}
+	else if (i % 8 == 7)
+	{
+		ft_putstr("rrb ");
+		op ? rrb(bb) : 0;
+	}
+	else if (i % 8 == 3)
+	{
+		ft_putstr("pa ");
+		op ? pa(ba, bb) : 0;
+	}
+	else if (i % 8 == 4)
+	{
+		ft_putstr("pb ");
+		op ? pb(bb, ba) : 0;
+	}
+}
+
 void		ft_put_sol(unsigned int i, char op, t_swap **ba, t_swap **bb)
 {
 	if (i / 8)
@@ -58,31 +105,7 @@ void		ft_put_sol(unsigned int i, char op, t_swap **ba, t_swap **bb)
 		ft_putstr("rra ");
 		op ? rra(ba) : 0;
 	}
-	else if (i % 8 == 3)
-	{
-		ft_putstr("pa ");
-		op ? pa(ba, bb) : 0;
-	}
-	else if (i % 8 == 4)
-	{
-		ft_putstr("pb ");
-		op ? pb(bb, ba) : 0;
-	}
-	else if (i % 8 == 5)
-	{
-		ft_putstr("sb ");
-		op ? sb(bb) : 0;
-	}
-	else if (i % 8 == 6)
-	{
-		ft_putstr("rb ");
-		op ? rb(bb) : 0;
-	}
-	else if(i % 8 == 7)
-	{
-		ft_putstr("rrb ");
-		op ? rrb(bb) : 0;
-	}
+	ft_suite_de_merde(i, op, ba, bb);
 	op ? ft_print_list(*ba, 1) : 0;
 	op ? ft_print_list(*bb, 0) : 0;
 }
