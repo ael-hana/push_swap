@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 17:48:31 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/22 18:10:41 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/25 04:00:52 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ unsigned char	ft_check_params(int ac, char **av)
 	if (ac < 2)
 		ft_error();
 	i = 1;
+	if (!ft_strcmp(av[i], "-v"))
+		i++;
 	while (ac > i)
 		ft_check_overflow(av[i++]);
 	index = 1;
@@ -75,5 +77,5 @@ unsigned char	ft_check_params(int ac, char **av)
 		}
 		++index;
 	}
-	return (0);
+	return (ft_strcmp(av[1], "-v") == 0 ? -42 : 0);
 }

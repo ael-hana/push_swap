@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:04:02 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/22 14:52:57 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/25 04:52:48 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ unsigned char			ft_check_params(int ac, char **av);
 void					ft_error();
 t_swap					*ft_init_list(char *av);
 t_swap					*ft_creat_list(int max, char **av);
-void					ft_print_list(t_swap *ptr);
+void					ft_print_list(t_swap *ptr, int op);
 void					ft_ss(t_swap **ptr, t_swap **ptr2);
 void					pa(t_swap **ptr, t_swap **ptr2);
 void					ft_rotate(t_swap **ptr);
@@ -42,7 +42,7 @@ void					rrb(t_swap **ptr);
 void					pb(t_swap **ptr, t_swap **ptr2);
 int						ft_size_list(t_swap *ptr);
 void					rrr(t_swap **ptr, t_swap **ptr2);
-void					ft_put_sol(unsigned int i);
+void					ft_put_sol(unsigned int i, char op, t_swap **ba, t_swap **bb);
 void					ft_algo(t_tab **op, t_swap **ba, t_swap **bb,
 unsigned int i);
 void					ft_algo_sort_s(t_tab **op, t_swap **ba, unsigned int i);
