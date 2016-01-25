@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:10:42 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/25 04:54:16 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/25 05:56:37 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,13 @@ int			main(int ac, char **av)
 
 	op = ft_check_params(ac, av);
 	ba = ft_creat_list(ac - 1, av);
+	if (op)
+	{
+		if (ft_sorted(ba))
+			ft_putstr("fini");
+		ft_print_list(ba, 1);
+		ft_print_list(bb, 0);
+	}
 	if (ft_sorted(ba))
 		return (0);
 	call_algo(&ba, &bb, (ac - 1), av);
