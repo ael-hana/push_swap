@@ -6,13 +6,15 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:04:02 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/25 06:52:31 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/25 06:55:21 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft.h"
+#ifndef FT_LIST_H
+# define FT_LIST_H
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
 
 typedef struct			s_swap
 {
@@ -46,7 +48,7 @@ void					ft_put_sol(unsigned int i, char op, t_swap **ba,
 void					ft_algo(t_tab **op, t_swap **ba, t_swap **bb,
 unsigned int i);
 void					ft_algo_sort_s(t_swap **ba, unsigned int i);
-
 void					ft_put_sol_s(unsigned int i);
 char					ft_sorted(t_swap *ptr);
 void					ft_algo_remove(t_swap **ba, t_swap **bb);
+#endif
