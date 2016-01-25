@@ -1,35 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_algo_s.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/25 03:09:51 by ael-hana          #+#    #+#             */
+/*   Updated: 2016/01/25 03:25:36 by ael-hana         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_list.h"
 
 void		ft_algo_sort_s(t_tab **op, t_swap **ba, unsigned int i)
 {
-/*	if (i / 3)
-		ft_algo_sort_s(op, ba, i / 3);
-	if (!(i % 3))
-		op[i % 3](ba);
-	else if (i % 3 == 1)
-		op[i % 3](ba);
-	else
-		op[i % 3](ba);*/
 	int		min;
 
 	min = (*ba)->data;
 	while (!ft_sorted(*ba))
 	{
-		if (min > (*ba)->data)
-		{
-			min = (*ba)->data;
-			while (min != (*ba)->data)
-				ra(ba);
-		}
 		if ((*ba)->data > (*ba)->next->data)
 		{
 			sa(ba);
+			ft_putstr("sa ");
+			if (min > (*ba)->data)
+				min = (*ba)->data;
 			while (min != (*ba)->data)
-				ra(ba);
+			{
+				rra(ba);
+				ft_putstr("rra ");
+			}
 		}
 		else
-			rra(ba);
+		{
+			ra(ba);
+			ft_putstr("rra ");
+		}
 	}
 }
 

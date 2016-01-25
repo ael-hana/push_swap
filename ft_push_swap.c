@@ -6,7 +6,7 @@
 /*   By: ael-hana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 20:10:42 by ael-hana          #+#    #+#             */
-/*   Updated: 2016/01/22 18:51:38 by ael-hana         ###   ########.fr       */
+/*   Updated: 2016/01/25 03:26:46 by ael-hana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,25 +92,19 @@ t_tab		**ft_pt_op(void)
 	return (op);
 }
 
-void				call_algo(t_swap **ba, int ac, char **av)
+void				call_algo(t_swap **ba, t_swap **bb, int ac, char **av)
 {
 	void			*tmp;
-	t_swap			**bb;
 	void			**dup;
 	unsigned int	i;
 
 	*bb = NULL;
 	tmp = ft_pt_op();
 	i = 0;
-	while (ac > 5 && !ft_sorted(*ba))
+	if (ac > 5 && !ft_sorted(*ba))
 	{
-		*ba = ft_creat_list(ac, av);
-		ft_algo_sort_s(tmp, ba, i++);
-	}
-	if (ft_sorted(*ba))
-	{
-		ft_put_sol_s(i);
-		return;
+		ft_algo_sort_s(tmp, ba, 1);
+		return ;
 	}
 	ft_algo(tmp, ba, bb, i);
 	while (!*ba || !ft_sorted(*ba) || *bb)
@@ -125,6 +119,7 @@ void				call_algo(t_swap **ba, int ac, char **av)
 int			main(int ac, char **av)
 {
 	t_swap	*ba;
+	t_swap	*bb;
 
 	ft_check_params(ac, av);
 	ft_putstr("*********************************************\n");
@@ -132,7 +127,7 @@ int			main(int ac, char **av)
 	ft_putstr("*********************************************\n");
 	if (ft_sorted(ba))
 		return (0);
-	call_algo(&ba, (ac - 1), av);
+	call_algo(&ba, &bb, (ac - 1), av);
 	ft_print_list(ba);
 	return (0);
 }
